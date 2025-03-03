@@ -1,0 +1,50 @@
+{% extends "acad/base.html" %} 
+{% load static %}
+{% comment "" %}Ajustes realizados para exibição da página home do projeto{% endcomment %}
+{% block page_title %}Home - IFS Monitor{% endblock page_title %}
+
+{% block content %}
+<div class="container mt-4 text-center">
+    <img src="{% static 'imagens/logo.png' %}" alt="Logo Faculdade" height="90" class="mb-3">
+    <h1>Bem-vindo ao IFS Monitor</h1>
+    <p>Plataforma de monitoramento de Sensores e Salas.</p>
+</div>
+
+<div class="row justify-content-center">
+    <!-- Card Salas -->
+    <div class="col-md-5">
+        <div class="card text-center shadow-sm card-hover">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-door-open"></i> Salas</h5>
+                <p class="card-text">Veja todas as salas monitoradas.</p>
+                <a href="{% url 'tipo_sala_list' %}" class="btn btn-primary">
+                    <i class="fa fa-building"></i> Ver Salas
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Sensores com Dropdown -->
+    <div class="col-md-5">
+        <div class="card text-center shadow-sm card-hover">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-microchip"></i> Sensores</h5>
+                <p class="card-text">Confira os sensores cadastrados.</p>
+
+                <!-- Dropdown Sensores -->
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownSensores" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-list"></i> Ver Sensores
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownSensores">
+                        <li><a class="dropdown-item" href="{% url 'tipo_sensor_list' %}"><i class="fa fa-microchip"></i> Sensores</a></li>
+                        <li><a class="dropdown-item" href="{% url 'tipo_sensor_fisico_list' %}"><i class="fa fa-microchip"></i> Sensores Físicos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'tipo_sensor_logico_list' %}"><i class="fa fa-microchip"></i> Sensores Lógicos</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

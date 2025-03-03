@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório Histórico Personalizado - PDF</title>
+    <style>
+        /* Estilos básicos para PDF */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            font-size: 12px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Estilos para a tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #dee2e6;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        /* Estilos para os filtros aplicados (opcional) */
+        .filtros {
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+        .filtros ul {
+            list-style: none;
+            padding: 0;
+        }
+        .filtros li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1><i class="fa fa-history"></i> Relatório Histórico Personalizado</h1>    
+    <!-- Tabela de Resultados -->
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data e Hora</th>
+                    <th>Sensor Físico</th>
+                    <th>Tipo de Sensor</th>
+                    <th>Unidade</th>
+                    <th>Sala</th>
+                    <th>Valor Médio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dado in dados %}
+                <tr>
+                    <td>{{ dado.data_hora }}</td>
+                    <td>{{ dado.nome_sensor_fisico }}</td>
+                    <td>{{ dado.tipo_sensor }}</td>
+                    <td>{{ dado.unidade_sensor }}</td>
+                    <td>{{ dado.nome_sala }} ({{ dado.sigla_sala }})</td>
+                    <td>{{ dado.valor_medio }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align: center;">Nenhum dado encontrado</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

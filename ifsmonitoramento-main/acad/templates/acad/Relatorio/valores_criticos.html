@@ -1,0 +1,41 @@
+{% extends "acad/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}Relatório de Valores Críticos{% endblock page_title %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Relatório de Sensores com Maior Ocorrência de Valores Críticos</h1>
+
+    <!-- Formulário de Filtros -->
+    <form method="GET" class="mb-4">
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+    </form>
+
+    <!-- Tabela de Resultados -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>Sensor</th>
+                    <th>Total de Ocorrências Críticas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sensor in parametros_criticos %}
+                <tr>
+                    <td>{{ sensor.id_sensor_logico__nome }}</td>
+                    <td>{{ sensor.total_criticos }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2" class="text-center">Nenhum dado crítico encontrado</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% comment "" %}edição 16/02/24{% endcomment %}

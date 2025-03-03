@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico Climático</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Gráfico Climático</h1>
+    <canvas id="graficoClimatico" width="400" height="200"></canvas>
+    <script>
+        // Fazendo uma requisição AJAX para buscar os dados
+        fetch("{% url 'dados_climaticos' %}")
+        .then(response => response.json())
+        .then(data => {
+            const ctx = document.getElementById('graficoClimatico').getContext('2d');
+            new Chart(ctx, {
+                type: 'line', // Gráfico de linha
+                data: {
+                    labels: data.labels, // Datas e horários
+                    datasets: [
+                        {
+                            label: 'Temperatura (°C)',
+                            data: data.temperaturas,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            fill: true
+                        },
+                        {
+                            label: 'Umidade (%)',
+                            data: data.umidades,
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            fill: true
+                        },
+                        {
+                            label: 'Sensação Térmica (°C)',
+                            data: data.sensacoes,
+                            borderColor: 'rgba(255, 206, 86, 1)',
+                            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

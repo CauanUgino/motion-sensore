@@ -1,0 +1,17 @@
+COMANDOS PARA INSERÇÃO DE DADOS PARA GERAÇÃO DE GRÁFICO
+
+python manage.py shell
+
+from acad.models import MedicaoClimatica
+
+MedicaoClimatica.objects.create(temperatura=26.5, umidade=60, sensacao_termica=28)
+MedicaoClimatica.objects.create(temperatura=30, umidade=55, sensacao_termica=32)
+MedicaoClimatica.objects.create(temperatura=22, umidade=75, sensacao_termica=24)
+
+MedicaoClimatica.objects.all()
+
+
+<QuerySet [<MedicaoClimatica: 26.5°C, 60%>, <MedicaoClimatica: 30°C, 55%>, ...]>
+"PROCESSO FOI REALIZADO CORRETAMENTE"
+
+exit()

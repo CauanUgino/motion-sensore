@@ -1,0 +1,50 @@
+{% extends "acad/base.html" %}
+{% load crispy_forms_tags %}
+{% block page_title %}Detalhar Tipo Sensor{% endblock page_title %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2"><i class="fa fa-info-circle"></i> Visualização de Tipo Sensor</h1>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="row">
+            <!-- Descrição -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">
+                    <strong><i class="fa fa-align-left"></i> Descrição:</strong>
+                </label>
+                <p class="form-control-static">{{ tipo_sensor.descricao }}</p>
+            </div>
+            <!-- Limite Superior -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">
+                    <strong><i class="fa fa-arrow-up"></i> Limite Superior:</strong>
+                </label>
+                <p class="form-control-static">{{ tipo_sensor.limite_superior_permitido }}</p>
+            </div>
+            <!-- Limite Inferior -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">
+                    <strong><i class="fa fa-arrow-down"></i> Limite Inferior:</strong>
+                </label>
+                <p class="form-control-static">{{ tipo_sensor.limite_inferior_permitido }}</p>
+            </div>
+            <!-- Unidade -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label">
+                    <strong><i class="fa fa-cube"></i> Unidade:</strong>
+                </label>
+                <p class="form-control-static">{{ tipo_sensor.unidade }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4 d-flex justify-content-end">
+    <a href="{% url 'tipo_sensor_list' %}" class="btn btn-primary">
+        <i class="fa fa-arrow-left"></i> Voltar
+    </a>
+</div>
+{% endblock content %}

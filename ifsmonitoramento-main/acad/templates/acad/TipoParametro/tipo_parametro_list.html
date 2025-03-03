@@ -1,0 +1,57 @@
+{% extends "acad/base.html" %}
+
+{% block page_title %}Parâmetro{% endblock page_title %}
+
+{% block content %}
+  <div class="table-responsive">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">
+        <i class="fa fa-sliders-h"></i> Parâmetro
+      </h1>
+      <div>
+       <a href="{% url 'tipo_parametro_create' %}" class="btn btn-primary">
+         <i class="fa fa-plus"></i> Adicionar Parâmetro
+       </a>
+      </div>
+    </div>
+
+    {% if tipo_parametros %}
+      <table class="table table-striped">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Valor</th>
+            <th scope="col" class="text-end">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for tps in tipo_parametros %}
+            <tr>
+              <td>{{ tps.nome }}</td>
+              {% if tps.valor %}
+                <td>{{ tps.valor }}</td>
+              {% else %}
+                <td></td>
+              {% endif %}
+              <td class="text-end">
+                <div class="d-flex justify-content-end gap-2">
+                  <a href="{% url 'tipo_parametro_detail' pk=tps.pk %}" class="btn btn-sm btn-info">
+                    <i class="fa fa-eye"></i> Visualizar
+                  </a>
+                  <a href="{% url 'tipo_parametro_update' pk=tps.pk %}" class="btn btn-sm btn-warning">
+                    <i class="fa fa-edit"></i> Editar
+                  </a>
+                  <a href="{% url 'tipo_parametro_delete' pk=tps.pk %}" class="btn btn-sm btn-danger">
+                    <i class="fa fa-trash-alt"></i> Excluir
+                  </a>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p> Não há parâmetros para análise</p>
+    {% endif %}
+  </div>
+{% endblock %}

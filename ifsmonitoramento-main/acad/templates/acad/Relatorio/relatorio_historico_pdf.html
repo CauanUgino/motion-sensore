@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório Histórico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Relatório Histórico</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo do Sensor</th>
+                <th>Valor</th>
+                <th>Sensor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for parametro in parametros %}
+            <tr>
+                <td>{{ parametro.nome }}</td>
+                <td>{{ parametro.valor }}</td>
+                <td>{{ parametro.id_sensor_logico.id_sensor_fisico.nome }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Nenhum dado encontrado</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

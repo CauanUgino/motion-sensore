@@ -1,0 +1,55 @@
+{% extends "acad/base.html" %}
+
+{% block page_title %}Tipo Sensor{% endblock page_title %}
+
+{% block content %}
+  <div class="table-responsive">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Tipo Sensor</h1>
+      <div>
+       <a href="{% url 'tipo_sensor_create' %}" class="btn btn-primary">
+         <i class="fa fa-plus"></i> Adicionar Tipo Sensor
+       </a>
+      </div>
+    </div>
+
+    {% if tipo_sensores %}
+      <table class="table table-striped">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">Descrição</th>
+            <th scope="col">Limite Inferior Permitido</th>
+            <th scope="col">Limite Superior Permitido</th>
+            <th scope="col">Unidade</th>
+            <th scope="col" class="text-end">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for tps in tipo_sensores %}
+            <tr>
+              <td>{{ tps.descricao }}</td>
+              <td>{{ tps.limite_inferior_permitido }}</td>
+              <td>{{ tps.limite_superior_permitido }}</td>
+              <td>{{ tps.unidade }}</td>
+              <td class="text-end">
+                <div class="d-flex justify-content-end gap-2">
+                  <a href="{% url 'tipo_sensor_detail' pk=tps.pk %}" class="btn btn-sm btn-info">
+                    <i class="fa fa-eye"></i> Visualizar
+                  </a>
+                  <a href="{% url 'tipo_sensor_update' pk=tps.pk %}" class="btn btn-sm btn-warning">
+                    <i class="fa fa-edit"></i> Editar
+                  </a>
+                  <a href="{% url 'tipo_sensor_delete' pk=tps.pk %}" class="btn btn-sm btn-danger">
+                    <i class="fa fa-trash-alt"></i> Excluir
+                  </a>
+                </div>  
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Não há tipos de sensores cadastrados</p>
+    {% endif %}
+  </div>
+{% endblock %}

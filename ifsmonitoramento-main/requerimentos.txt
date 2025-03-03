@@ -1,0 +1,10 @@
+Django
+crispy_bootstrap5
+mysqlclient
+xhtml2pdf
+Avg, F, Func, Count
+Paginator
+ F, Count, Q
+
+        Verifique antes de instalar
+ !!!venv/get-pip.py pasta de instalação da versão atualizada do pip !!!!!

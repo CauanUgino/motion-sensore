@@ -1,0 +1,34 @@
+{% extends "acad/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+  {% if tipo_sala.pk %}
+    Editar Sala
+  {% else %}
+    Nova Sala
+  {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    {% if tipo_sala.pk %}
+      <h1 class="h2"><i class="fa fa-edit"></i> Atualizar Sala</h1>
+    {% else %}
+      <h1 class="h2"><i class="fa fa-plus"></i> Cadastrar Nova Sala</h1>
+    {% endif %}
+  </div>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+
+    <!-- Botões com Ícones -->
+    <button type="submit" class="btn btn-primary">
+      <i class="fa fa-save"></i> Salvar
+    </button>
+    <a href="{% url 'tipo_sala_list' %}" class="btn btn-danger">
+      <i class="fa fa-times"></i> Cancelar
+    </a>
+  </form>
+{% endblock content %}
+{% comment "" %}edição 16/02/24{% endcomment %}

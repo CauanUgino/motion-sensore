@@ -1,0 +1,52 @@
+{% extends "acad/base.html" %}
+{% load crispy_forms_tags %}
+{% block page_title %}Detalhar Sala{% endblock page_title %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2"><i class="fa fa-file-alt"></i> Relatório da Sala</h1>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="row">
+            <!-- Nome da Sala -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label"><strong><i class="fa fa-door-open"></i> Sala:</strong></label>
+                <p class="form-control-static">{{ tipo_sala.nome }}</p>
+            </div>
+
+            <!-- Sigla -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label"><strong><i class="fa fa-tag"></i> Sigla:</strong></label>
+                <p class="form-control-static">{{ tipo_sala.sigla }}</p>
+            </div>
+
+            <!-- Pavimento -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label"><strong><i class="fa fa-building"></i> Pavimento:</strong></label>
+                <p class="form-control-static">{{ tipo_sala.pavimento }}</p>
+            </div>
+
+            <!-- Orientação -->
+            <div class="col-md-6 mb-3">
+                <label class="form-label"><strong><i class="fa fa-compass"></i> Orientação:</strong></label>
+                <p class="form-control-static">{{ tipo_sala.orientacao }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4 d-flex justify-content-end gap-2">
+    <!-- Botão Voltar -->
+    <a href="{% url 'tipo_sala_list' %}" class="btn btn-secondary">
+        <i class="fa fa-arrow-left"></i> Voltar
+    </a>
+
+    <!-- Botão Imprimir -->
+    <button class="btn btn-primary" onclick="window.print()">
+        <i class="fa fa-print"></i> Imprimir
+    </button>
+</div>
+{% endblock content %}
+{% comment "" %}edição 16/02/24{% endcomment %}

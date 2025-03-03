@@ -1,0 +1,24 @@
+{% extends "acad/base.html" %}
+
+{% block page_title %}Exclusão de Parâmetro{% endblock page_title %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">
+        <i class="fa fa-trash-alt"></i> Excluir Parâmetro
+    </h1>
+</div>
+<div class="alert alert-danger" role="alert">
+    <i class="fa fa-exclamation-triangle"></i>
+    Tem certeza de que deseja excluir o Parâmetro <strong>{{ tipo_parametro.tipo }}</strong>?
+</div>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">
+        <i class="fa fa-trash"></i> Excluir
+    </button>
+    <a href="{% url 'tipo_parametro_list' %}" class="btn btn-primary">
+        <i class="fa fa-times"></i> Cancelar
+    </a>
+</form>
+{% endblock content %}

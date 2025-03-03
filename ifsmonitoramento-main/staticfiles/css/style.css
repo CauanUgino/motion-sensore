@@ -1,0 +1,205 @@
+/* Global Styles */
+body {
+    font-size: 0.875rem;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100vw;
+    min-height: 100vh; /* Permite que o body cresça se houver mais conteúdo */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;  /* Bloqueia apenas o scroll horizontal */
+    overflow-y: auto;    /* Habilita o scroll vertical */
+    background-color: #5dec69; /* Verde escuro */
+    color: white; /* Deixa o texto mais visível */
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #265126; /* Verde ainda mais escuro */
+    padding: 1rem;
+    color: #fff;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    border-radius: 0.5rem;
+    background-color: #a8e6a3; /* Verde claro */
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #000;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    background-color: #a8e6a3; /* Verde claro */
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    width: 100%;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;  /* Permite rolagem vertical no main */
+    min-height: 100vh; /* Garante que o main ocupe pelo menos a altura da janela */
+}
+
+/* Table */
+.table th,
+.table td {
+    vertical-align: middle;
+    width: 300px;
+    border-radius: 0.5rem;
+    border: 5px solid white;
+    padding: 5px;
+    text-align: center;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.table .text-end {
+    text-align: right;
+}
+
+/* Form */
+form {
+    background-color: #22761c; /* Verde claro */
+    color: black; /* Mantém contraste */
+    border-radius: 0.5rem;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+thead{
+    border-radius: 10px;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #28a745; /* Verde forte */
+    border-color: #28a745;
+    color: white;
+    transition: background-color 0.3s ease;
+
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+    transition: background-color 0.3s ease;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.btn-info{
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+}
+.btn-warning{
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: black;
+}
+.btn i {
+    margin-right: 5px;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+.navbar, header {
+    background-color: #145214 !important; /* Verde escuro */
+    border-bottom: 3px solid #0f3d0f; /* Linha de contraste */
+}
+
+/* Força a cor do rodapé */
+footer {
+    background-color: #072607 !important; /* Verde escuro */
+    color: white !important;
+    border-top: 3px solid #0f3d0f; /* Linha de contraste */
+}
+
+/* Caso o Bootstrap esteja interferindo */
+.navbar-dark .navbar-nav .nav-link {
+    color: white !important; /* Garante que os links fiquem brancos */
+}
+
+.navbar-dark .navbar-brand {
+    color: white !important;
+}
+.navbar-nav .nav-link i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+    font-size: 1.2em;  /* Tamanho ligeiramente maior */
+}
+/*edição 16/02/24

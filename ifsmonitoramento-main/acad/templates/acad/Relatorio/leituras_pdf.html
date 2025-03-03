@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Leituras - PDF</title>
+    <style>
+        /* Estilos básicos para o PDF */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            font-size: 12px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #dee2e6;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1><i class="fa fa-chart-line"></i> Relatório de Leituras</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Sala</th>
+                <th>Data e Hora da Leitura</th>
+                <th>Sensor Lógico</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for leitura in leituras %}
+            <tr>
+                <td>{{ leitura.id_leitura.id_sala.nome }}</td>
+                <td>{{ leitura.id_leitura.data_hora|date:"d/m/Y H:i" }}</td>
+                <td>{{ leitura.id_sensor_logico.descricao }}</td>
+                <td>{{ leitura.valor }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" style="text-align: center;">Nenhum dado encontrado</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

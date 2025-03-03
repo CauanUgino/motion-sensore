@@ -1,0 +1,56 @@
+{% extends "acad/base.html" %}
+{% comment "" %}Criação do Gráfico de Temperatura{% endcomment %}
+{% block page_title %}Gráfico Climático{% endblock page_title %}
+
+{% block content %}
+<div class="container text-center">
+    <h2 class="mt-4">Distribuição Térmica</h2>
+    <div class="d-flex justify-content-center">
+        <canvas id="graficoClimatico" style="max-width: 2000px; max-height: 2000px;"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    fetch("{% url 'dados_climaticos' %}")
+    .then(response => response.json())
+    .then(data => {
+        const ctx = document.getElementById('graficoClimatico').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'pie', // Gráfico de pizza
+            data: {
+                labels: ["Temperatura Média (°C)", "Umidade Média (%)", "Sensação Térmica Média (°C)"],
+                datasets: [{
+                    label: 'Distribuição Climática',
+                    data: [
+                        data.temperaturas.reduce((a, b) => a + b, 0) / data.temperaturas.length, 
+                        data.umidades.reduce((a, b) => a + b, 0) / data.umidades.length, 
+                        data.sensacoes.reduce((a, b) => a + b, 0) / data.sensacoes.length
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',  // Vermelho (Temperatura)
+                        'rgba(54, 162, 235, 0.5)',  // Azul (Umidade)
+                        'rgba(255, 206, 86, 0.5)'   // Amarelo (Sensação Térmica)
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // Permite ajuste de tamanho
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock content %}
